@@ -37,38 +37,49 @@ Reference 写得非常详细了，这里不粘贴复制了，没啥意义，总�
 
 ### Demo
 
-若干字段一起拆分，字段平铺，复制一行再反转，一行变多行，如下表，左侧一行变成右侧两行
+- 若干字段一起拆分，字段平铺，复制一行再反转，一行变多行，如下表，左侧一行变成右侧两行
 
-| col1 | col2 | col11 | col12 | col21 | col22 |
-| :-: | :-: | :-: | :-: | :-: | :-: |
-| aa##bb | 11@@22 | aa | bb | 11 | 22 |
-|  |  | bb | aa | 22 | 11 |
+	| col1 | col2 | col11 | col12 | col21 | col22 |
+	| :-: | :-: | :-: | :-: | :-: | :-: |
+	| aa##bb | 11@@22 | aa | bb | 11 | 22 |
+	|  |  | bb | aa | 22 | 11 |
 
-```sql
-select t1.col0,
-	t2.col11,
-	t2.col12,
-	t2.col21,
-	t2.col22
-from (
-	select col0,
-		split(col1, '##') as col1,
-		split(col2, '@@') as col2
-	from tablexxx
-	where xxx
-) t1
---以下方法1与方法2功能相同，任选其一即可
+	```sql
+	select t1.col0,
+		t2.col11,
+		t2.col12,
+		t2.col21,
+		t2.col22
+	from (
+		select col0,
+			split(col1, '##') as col1,
+			split(col2, '@@') as col2
+		from tablexxx
+		where xxx
+	) t1
+	--以下方法1与方法2功能相同，任选其一即可
 
---方法1：使用inline
-lateral view inline(array(
-	struct(col1[0], col1[1], col2[0], col2[1]),
-	struct(col1[1], col1[0], col2[1], col2[0])
-)) t2 as col11, col12, col21, col22
+	--方法1：使用inline
+	lateral view inline(array(
+		struct(col1[0], col1[1], col2[0], col2[1]),
+		struct(col1[1], col1[0], col2[1], col2[0])
+	)) t2 as col11, col12, col21, col22
 
---方法2：使用stack
-lateral view stack(2,
-    col1[0], col1[1], col2[0], col2[1],
-    col1[1], col1[0], col2[1], col2[0]
-) t2 as col11, col12, col21, col22
-;
-```
+	--方法2：使用stack
+	lateral view stack(2,
+		col1[0], col1[1], col2[0], col2[1],
+		col1[1], col1[0], col2[1], col2[0]
+	) t2 as col11, col12, col21, col22
+	;
+	```
+
+- 行转列：各字段先变成array，然后再explode
+
+	字段col1,col2,col3变成同一列col4，三行取值分别是col1,col2,col3
+
+	```sql
+	select t1.col0,
+		t2.col4
+	from tablex t1
+	lateral view explode(array(col1, col2, col3)) t2 as col4;
+	```
