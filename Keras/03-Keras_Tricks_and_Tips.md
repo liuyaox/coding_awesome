@@ -1,5 +1,12 @@
 # Keras Tricks and Tips
 
+# Overview
+
+#### Article
+
+- [Keras作者：TF 2.0＋Keras深度学习研究你需要了解的12件事 - 2019](https://cloud.tencent.com/developer/article/1422728)
+
+
 # Initialization
 
 #### Article
@@ -14,7 +21,6 @@
 ## LearningRateScheduler
 
 动态学习率，值得好好了解一下
-
 
 
 # Overfitting

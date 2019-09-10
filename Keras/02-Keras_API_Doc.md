@@ -1,9 +1,13 @@
 # Keras API Doc
 
+# 0. Overview
+
+#### Article
+
+- [TensorFlow官方最新tf.keras指南：面向对象构建深度网络 - 2019](https://mp.weixin.qq.com/s?__biz=MzI3MTA0MTk1MA==&mid=2652041341&idx=3&sn=ef964dd9d2dd92895ada23b63cb4d9f2)
+
+
 # 1. Layers
-
-## 1.1 Overview
-
 
 ## 1.2 Lambda
 
