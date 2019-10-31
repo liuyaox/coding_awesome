@@ -110,20 +110,20 @@ Push a1 into a RNN to get output b1. Than push a2 and the hidden output of a1 to
 
 Reference: <https://github.com/keras-team/keras/issues/1029>
 
-**解读2**：TimeDistributed(Layer)表示**在每个Timestep后都加一个Layer**，各Layer参数权重共享，Layer可为Dense/CNN/RNN?等
+**解读2**：TimeDistributed(Layer)表示**在每个Timestep后都加一个Layer**，各Layer参数权重共享，Layer可为Dense/CNN/RNN?等. 在**HAN**模型中使用了TimeDistributed
 
 ```python
-# 应用于Dense，12个timestep后都各加一个Dense，不过各Dense参数共享，参数量为8*10+10=90
+# 应用于Dense: 12个timestep后都各加一个Dense，各Dense参数共享，参数量为8*10+10=90
 inputs = Input(shape=(12, 8))              # 输入维度(None, 12, 8)
 out = TimeDistributed(Dense(10))(inputs)   # 输出维度(None, 12, 10)
 
-# 应用于Conv2D，12个timestep后都各加一个Conv2D，不过各Conv2D参数共享，参数量为3*3*3*32+32=896
-inputs = Input(shape=(12, 32, 32, 3))
-out = TimeDistributed(Conv2D(filters=32, kernel_size=(3, 3), padding='same'))(inputs)
+# 应用于Conv2D: 12个timestep后都各加一个Conv2D，各Conv2D参数共享，参数量为3*3*3*16+16=448
+inputs = Input(shape=(12, 32, 32, 3))                                                   # 输入维度(None, 12, 32, 32, 3)
+out = TimeDistributed(Conv2D(filters=16, kernel_size=(3, 3), padding='same'))(inputs)   # 输出维度(None, 12, 32, 32, 16)
 
 # 作为对比，不使用TimeDistributed
-inputs = Input(shape=(32, 32, 3))             # 一般情况下没有timestep数量
-out = Conv2D(filters=32, kernel_size=(3, 3), padding='same')(inputs)
+inputs = Input(shape=(32, 32, 3))    # 一般情况下没有timestep(即12)        输入维度(None, 32, 32, 3)
+out = Conv2D(filters=16, kernel_size=(3, 3), padding='same')(inputs)    # 输出维度(None, 32, 32, 16)
 ```
 Reference: [TimeDistributed的理解和用法 - 2018](https://blog.csdn.net/zh_JNU/article/details/85160379)
 
@@ -133,6 +133,7 @@ X = LSTM(16, return_sequences=True)(inputs)   # (None, 10, 16)
 out = TimeDistributed(Dense(4))(X)            # (None, 10, 4)
 
 # 作为对比，不使用TimeDistributed
+inputs = Input(shape=(10, 32))                # (None, 10, 32)
 X = LSTM(16, return_sequences=False)(inputs)  # (None, 16)
 out = Dense(4)(X)                             # (None, 4)
 ```
