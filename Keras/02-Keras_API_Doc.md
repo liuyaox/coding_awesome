@@ -35,7 +35,7 @@ def func2(x):
 
 `keras.layers.Masking(mask_value=0.0)`
 
-对输入的序列信号中等于给定值mask_value的timestep(其实是元素级)进行屏蔽，实际操作是保留这一timestep，只是不参与计算。
+对输入的Sequence信号中等于给定值mask_value的**timestep**(不是元素)进行屏蔽，实际操作是保留这一timestep，只是不参与计算。
 
 应用场景1：输入数据X中，缺少时间步长3和5对应的信号，希望将其掩盖，然后才能输入LSTM层
 ```python
@@ -138,6 +138,36 @@ X = LSTM(16, return_sequences=False)(inputs)  # (None, 16)
 out = Dense(4)(X)                             # (None, 4)
 ```
 Reference: [How to Use the TimeDistributed Layer in Keras - 2017](https://machinelearningmastery.com/timedistributed-layer-for-long-short-term-memory-networks-in-python/)
+
+
+## 1.5 1D Layers
+
+Conv1D, ZeroPadding1D, SpatialDropout1D
+
+## 1.5.1 SpatialDropout1D VS Dropout
+
+官网：SpatialDropout1D performs the same function as Dropout, however it drops **entire 1D feature maps** instead of **individual elements**.
+
+假设input_shape=(batch_size, timesteps, features), 则Dropout是在所有元素(timesteps\*features)上进行Droput，而SpatialDropout1D只对features上若干维度进行Dropout，比如所有timesteps的第1、4个feature。对于Embedding后shape=(batch_size, word_maxlen, embed_dim)的X来说，所有word的embed_dim中有若干维度被Dropout，相当于**词向量随机降维**。
+
+如下图，左侧为Dropout，右侧为SpatialDropout1D
+
+![](https://raw.githubusercontent.com/liuyaox/ImageHosting/master/for_markdown/SpatialDropout1D.png)
+
+若特征图内相邻XX(1D-frames, 2D-pixels, 3D-voxels)之间有很强的关联（通常发生在低层的卷积层中），那么Dropout无法正则化其输出，否则就会导致明显的学习率下降，此时应该使用SpatialDropout1D，帮助提高特征图之间的独立性。
+
+SpatialDropout2D, SpatialDropout3D与SpatialDropout1D理念类似，只是shape不同。
+
+参考：[Spatial Dropout](https://blog.csdn.net/weixin_43896398/article/details/84762943)
+
+
+## 1.5.2 ZeroPadding1D
+
+shape=(batch_size, maxlen, features) --> ZeroPadding1D(pad_size)(X) --> shape=(batch_size, **maxlen + 2 \* pad_size**, features)
+
+相当于只在maxlen这一个维度的头和尾上进行Padding，一般可配合着在Conv1D之前使用，先扩充一下Sequence长度，再通过Conv1D减少长度至原长度。
+
+TODO 为何不直接在Conv1D中直接设置padding='same'？？？
 
 
 ## 1.8 Custom Layer
