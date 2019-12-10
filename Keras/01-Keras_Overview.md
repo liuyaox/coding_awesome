@@ -14,5 +14,6 @@
 
     使用计算图的语言如Theano，以难以调试而闻名，没有经验的开发者很难直观感受计算图到底在干什么。尽管很让人头痛，但大多数深度学习框架使用的都是符号计算这一套方法，因为符号计算能够提供关键功能：计算优化、自动求导等。
 
+- [Keras vs. tf.keras: What’s the difference in TensorFlow 2.0? - 2019](https://www.pyimagesearch.com/2019/10/21/keras-vs-tf-keras-whats-the-difference-in-tensorflow-2-0/)
 
-
+    **Chinese**: [TensorFlow 2.0中的tf.keras和Keras有何区别？为什么以后一定要用tf.keras？](https://mp.weixin.qq.com/s?__biz=MzA3MzI4MjgzMw==&mid=2650775817&idx=4&sn=58476287a3a3550248ce0845a07590cd)
