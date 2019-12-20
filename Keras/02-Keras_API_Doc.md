@@ -85,11 +85,19 @@ model.add(LSTM(32))
 
 - [keras中的mask操作](https://www.cnblogs.com/databingo/p/9339175.html)
 
+- [Keras学习笔记（三）不利用padding方式解决可变长序列问题 - 2019](https://blog.csdn.net/buchidanhuang/article/details/99332723)
+
+    Tensorflow使用sequence_length表示各个样本的timesteps的长度，多的部分输出为0；Keras使用Embedding(mask_zero=True)或Masking，多的部分输出为有效的最近邻的输出。
+
 #### Question
 
 Masking与Embedding(mask_zero=True)啥关系？同时使用？只使用前者？只使用后者？ Masking+Embedding(mask_zero=False)同时使用呢？？？
 
-RNN API中的Masking处写道：This layer supports masking for input data with a variable number of timesteps. To introduce masks to your data, use an Embedding layer with the mask_zero parameter set to True. ？？？<https://keras.io/layers/recurrent/>
+RNN API中的Masking处写道：This layer supports masking for input data with a variable number of timesteps. To introduce masks to your data, use an Embedding layer with mask_zero=True. ？？？<https://keras.io/layers/recurrent/>
+
+另外，"实际使用时发现很多程序中并不考虑补零的问题，我自己测试时mask_zero为Ture或False对结果也没太大。而且一般keras中不使用LSTM()或GRU()，而是更快的CuDNNLSTM()和CuDNNGRU()，后两者是不支持mask的，如果Embedding()的参数mash_zero设为True，那model.compile()时就会报错。"
+
+(原文链接：https://blog.csdn.net/yanhe156/article/details/85578731)
 
 
 ## 1.4 TimeDistributed

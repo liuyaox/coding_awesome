@@ -6,6 +6,8 @@
 
 - [Keras作者：TF 2.0＋Keras深度学习研究你需要了解的12件事 - 2019](https://cloud.tencent.com/developer/article/1422728)
 
+- 【Great】[Keras 使用技巧 - 2019](https://xiaosheng.me/2019/09/10/article166/)
+
 
 # Initialization
 
