@@ -73,6 +73,8 @@ model.add(LSTM(32))
 
 #### Article
 
+- [Masking and padding with Keras](https://tensorflow.google.cn/guide/keras/masking_and_padding)
+
 - [使用Keras和Pytorch处理RNN变长序列输入的方法总结](https://zhuanlan.zhihu.com/p/63219625)
 
 - [对keras函数中mask的个人理解](https://blog.csdn.net/lby503274708/article/details/94596068)
@@ -91,13 +93,17 @@ model.add(LSTM(32))
 
 #### Question
 
-Masking与Embedding(mask_zero=True)啥关系？同时使用？只使用前者？只使用后者？ Masking+Embedding(mask_zero=False)同时使用呢？？？
+TODO：Masking与Embedding(mask_zero=True)啥关系？同时使用？只使用前者？只使用后者？ Masking+Embedding(mask_zero=False)同时使用呢？？？
 
 RNN API中的Masking处写道：This layer supports masking for input data with a variable number of timesteps. To introduce masks to your data, use an Embedding layer with mask_zero=True. ？？？<https://keras.io/layers/recurrent/>
 
 另外，"实际使用时发现很多程序中并不考虑补零的问题，我自己测试时mask_zero为Ture或False对结果也没太大。而且一般keras中不使用LSTM()或GRU()，而是更快的CuDNNLSTM()和CuDNNGRU()，后两者是不支持mask的，如果Embedding()的参数mash_zero设为True，那model.compile()时就会报错。"
 
-(原文链接：https://blog.csdn.net/yanhe156/article/details/85578731)
+[原文链接](https://blog.csdn.net/yanhe156/article/details/85578731)
+
+
+TODO：Layer的输出结果的output_mask属性，或Layer的_keras_mask属性，有时是"NotEqual:0"，有时是"All:0"，有时是"Any:0"，各有什么区别？
+
 
 
 ## 1.4 TimeDistributed
@@ -186,6 +192,8 @@ Doc: <https://keras.io/layers/writing-your-own-keras-layers/>
 
 - [使用Keras编写自定义网络层 - 2018](https://blog.csdn.net/u013084616/article/details/79295857)
 
+- [“让Keras更酷一些！”：精巧的层与花式的回调 - 2018](https://kexue.fm/archives/5765)
+
 
 # 2. Models
 
@@ -194,8 +202,9 @@ Doc: <https://keras.io/layers/writing-your-own-keras-layers/>
 
 # 2.2 K.function VS Model
 
-[获取中间层的输出](https://keras.io/getting-started/faq/#how-can-i-obtain-the-output-of-an-intermediate-layer)
+- [获取中间层的输出](https://keras.io/getting-started/faq/#how-can-i-obtain-the-output-of-an-intermediate-layer)
 
+- [“让Keras更酷一些！”：中间变量、权重滑动和安全生成器 - 2019](https://kexue.fm/archives/6575)
 
 
 # 9. Others
