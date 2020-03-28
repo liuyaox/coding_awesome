@@ -9,3 +9,9 @@
 ## Github
 
 - [因为这个工具，我在 GitHub 搜索源码的时间缩短了 50% - 2020](https://mp.weixin.qq.com/s?__biz=MzIwOTc2MTUyMg==&mid=2247496468&idx=2&sn=51a91acbf19eb81924db30c5d7749c49)
+
+
+## MacBook
+
+- [高效 MacBook 工作环境配置，超实用 - 2020](https://mp.weixin.qq.com/s/zCieNAZMXAvkNQkTJhgVsQ)
+
