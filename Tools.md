@@ -21,3 +21,8 @@
 
 - [高效 MacBook 工作环境配置，超实用 - 2020](https://mp.weixin.qq.com/s/zCieNAZMXAvkNQkTJhgVsQ)
 
+
+
+## Others
+
+- [史上最强markdown编辑器typora终于支持图床功能了 - 2020](https://zhuanlan.zhihu.com/p/137310314)
