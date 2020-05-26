@@ -57,3 +57,13 @@ word2vector = KeyedVectors.load_word2vec_format(word2vec_file, binary=False)
 
 # Get a Keras 'Embedding' layer with weights set as the Word2Vec model's learned word embeddings.
 embedding_layer = word2vector.get_keras_embedding(train_embeddings=False)
+
+
+# 3. 应用Word Embedding
+# KeyedVectors
+# API Doc: https://radimrehurek.com/gensim/models/keyedvectors.html
+
+word2vector.n_similarity()
+word2vector.most_similar()
+word2vector.most_similar_cosmul
+word2vector.most_similar_to_given       # 从指定范围内寻找most_similar
