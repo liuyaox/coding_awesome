@@ -1,4 +1,13 @@
 
+## Chrome
+
+- <https://github.com/philc/vimium>
+
+    像Vim那样操作网页
+
+    **Article**: [一款能极大提升你网站浏览体验的开源神器](https://mp.weixin.qq.com/s/W8L3JfLHrlupdCpe5DhlHA)
+
+
 ## VS Code
 
 - [实时可视化Debug：VS Code 开源新工具，一键解析代码结构 - 2020](https://mp.weixin.qq.com/s?__biz=MzI4MDYzNzg4Mw==&mid=2247492092&idx=3&sn=8ff84ed3853f0d6e529a667ddc5d6bf6)
