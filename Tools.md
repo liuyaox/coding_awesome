@@ -50,6 +50,12 @@
     QuickLook for other file extensions
 
 
+## Windows
+
+- [【效率】又来一个Windows神器！ - 2020](https://mp.weixin.qq.com/s/u1WJlVFandjKV1xdMGwrDA)
+
+
+
 ## Others
 
 - [史上最强markdown编辑器typora终于支持图床功能了 - 2020](https://zhuanlan.zhihu.com/p/137310314)
@@ -76,3 +82,4 @@
 
     **Article**: [向 Excel 说再见，神级编辑器统一表格与 Python!](https://mp.weixin.qq.com/s/YBpNM0yO38ut4pvRVxYA3w)
 
+- [数学表达式一键变图，CMU开发实用工具Penrose，堪称图解界LaTeX - 2020](https://mp.weixin.qq.com/s/Y8PW3mKbUKgGPdxerqVNKA)
