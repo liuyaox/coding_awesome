@@ -49,6 +49,12 @@
 
     QuickLook for other file extensions
 
+- [iTerm2 + Oh My Zsh 打造舒适终端体验 - 2019](https://zhuanlan.zhihu.com/p/37195261)
+
+- [Effective Mac](http://fullstack.blog/mac/)
+
+    包含系统配置、Mac工作流、Vim、Git、Zsh
+
 
 ## Windows
 
