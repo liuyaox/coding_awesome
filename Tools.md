@@ -56,6 +56,11 @@
     包含系统配置、Mac工作流、Vim、Git、Zsh
 
 
+## Alfred
+
+- [Alfred 效率神器全攻略 - 2016](http://blog.surfacew.com/tool/2016/08/03/Alfred/)
+
+
 ## Windows
 
 - [【效率】又来一个Windows神器！ - 2020](https://mp.weixin.qq.com/s/u1WJlVFandjKV1xdMGwrDA)
